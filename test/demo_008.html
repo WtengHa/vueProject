@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+    <style>
+        .aa{font-size: 30px;}
+        .bb{border: #000 solid 1px;}
+        .cc{background-color: lightyellow;}
+    </style>
+</head>
+<body>
+    <!--v-bind的使用-->
+    <div id="app">
+        <div v-bind:class="flag?param1:param3">
+            test
+        </div>
+        <button @click="flag=!flag">点击切换样式</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                param1:"aa",
+                param2:"bb",
+                param3:"cc",
+                flag:true
+            },
+            methods:{
+                
+            }
+        });
+    </script>
+</body>
+</html>

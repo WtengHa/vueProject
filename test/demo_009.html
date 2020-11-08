@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 会带着div一起循环，形成换行 -->
+        <div v-for="item in list">
+            {{item.id}}------{{item.name}}
+        </div>
+        <br>
+        <!-- index索引 -->
+        <div v-for="(item,index) in list">
+            {{index}}:{{item.id}}------{{item.name}}
+        </div>
+        <br>
+        <div v-for="(value, key, index) in person">
+            {{index}} :{{key}}------{{value}}
+        </div>
+
+        <ul>
+            <li v-for="i in 5">
+                {{i}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    {id:1,name:'关羽'},
+                    {id:2,name:'张飞'},
+                    {id:3,name:'赵云'},
+                    {id:4,name:'马超'},
+                    {id:5,name:'黄忠'}
+                ],
+                person:{
+                    id:1001,
+                    name:'曹操',
+                    age:60,
+                    weapon:'青钢剑',
+                    horse:'绝影'
+                }
+            },
+            methods:{
+                
+            }
+        });
+    </script>
+</body>
+</html>

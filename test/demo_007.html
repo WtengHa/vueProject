@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!--v-bind的使用-->
+    <div id="app">
+        <input type="text" v-model="n1">
+        <select v-model="option">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model="n2">
+        <button @click="calculate">=</button>
+        <span>{{result}}</span>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                n1:0,
+                n2:0,
+                option:"+",
+                result:""
+            },
+            methods:{
+                calculate(){
+                    this.result = eval(this.n1+this.option+this.n2);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

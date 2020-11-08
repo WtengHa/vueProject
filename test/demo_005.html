@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+    <style>
+        .d1{width: 300px; height: 300px; background-color: aqua;}
+        .d2{width: 200px; height: 200px; background-color: #8ab42e;}
+        .d3{width: 200px; height: 200px; background-color: #ff6600;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- once 点击一次下次就不响应了-->
+        <button @click.once="f1">点我</button>
+
+        <!-- prevent ,执行完click后不跳转了，阻止原来的时间-->
+        <a @click.prevent="f2" href="http://baidu.com/s?wd=springboot">go to baidu</a>
+
+        <!-- 阻止事件冒泡，事件到table先往里边串，然后再从td往外传进行响应 -->
+        <table @click="f3">
+            <tr @click="f4">
+                <td @click.stop="f5">stop修饰符</td>
+            </tr>
+        </table>
+
+        <!-- capture, 事件委托模型是先由外而内，再由内到外传播的
+        且由外到内默认不执行事件处理函数，直到由内到外的时候才触发，
+        我们可以加上事件修饰符capture，让其由外而内的时候直接触发。 -->
+        <table @click.capture="f3">
+            <tr @click.capture="f4">
+                <td @click.capture="f5">capture修饰符</td>
+            </tr>
+        </table>
+
+        <!--  只有事件发生在自己身上才触发，冒泡上来的不算  -->
+        <div class="d1" @click.self="f6">
+            <div class="d2">
+                <div class="d3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            methods:{
+                f1(){
+                    console.log(parseInt((Math.random() * 100) + 1));
+                },
+                f2(){
+                    alert(123);
+                },
+                f3(){
+                    alert(333);
+                },
+                f4(){
+                    alert(444);
+                },
+                f5(){
+                    alert(555);
+                },
+                f6(){
+                    alert(666);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

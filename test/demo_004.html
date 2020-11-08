@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            {{msg}}
+        </div>
+        <button @click="lang">动起来！！！</button>
+        <button @click="stop">停止！</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+                msg:"王腾特别能吃苦",
+                timeObject:null
+            },
+            methods:{
+                lang(){
+                    if(this.timeObject == null){
+                        this.timeObject =setInterval(function(){
+                            var self = this;
+                            self.msg = self.msg.substring(1) + self.msg.substring(0,1);
+                        }, 100);
+                    }
+                },
+                stop(){
+                    clearInterval(this.timeObject);
+                    this.timeObject = null;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

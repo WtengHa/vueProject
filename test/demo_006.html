@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--引入以下js库，以后就能使用vue的功能了，确切说就是可以使用vue这个构造函数了-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!--我们已经知道，所谓的单向绑定就是，当vue的属性发生改变的时候，所有使用差值表达式{{msg}}的地方都会发生改变
+        所谓的单向绑定，就是vue属性变话，引起了{{msg}}位置的变化。
+        
+        所谓的双向绑定，就是使用vue对象的msg属性的地方，把msg的值改了，vue对象的msg属性也跟着变了。
+        双向绑定只能用于那些能用于接受输入的元素，确切的水，就是表单，input，select，textarea
+    -->
+    <div id="app">
+        <!-- 使用v-bind绑定，简写是   :value="poem" -->
+        <!-- <input type="text" v-bind:value="poem" /> -->
+        {{poem}} </br>
+        <input type="text" v-model="poem" /> </br>
+        <textarea type="text" v-model="poem"></textarea>
+        <br>
+        <select v-model="nation">
+            <option value="1">English</option>
+            <option value="2">Math</option>
+            <option value="3">Chinese</option>
+        </select>
+        {{nation}}
+    </div>
+
+    <script>
+        var app = new Vue({
+            //将当前的vue对象与id为app的div元素绑定
+            el:"#app",
+            data:{
+                poem:"黄河远上白云间，一片孤城万仞山。羌笛何须怨杨柳，春风不度玉门关。",
+                nation:2
+            }
+        });
+        console.log(app.name);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--引入以下js库，以后就能使用vue的功能了，确切说就是可以使用vue这个构造函数了-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!--vue环境搭建-->
+    <div id="app">
+        我是div
+        {{name}}---{{age}}
+    </div>
+
+    <script>
+        console.log(Vue);
+        //每一个vue，都要与某一个DOM元素绑定
+        var app = new Vue({
+            //将当前的vue对象与id为app的div元素绑定
+            el:"#app",
+            //vue对象的属性
+            data: {
+                name:"张三",
+                age: 22
+            }
+        });
+        console.log(app.name);
+    </script>
+    
+</body>
+</html>

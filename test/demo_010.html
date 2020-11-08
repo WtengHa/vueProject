@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        id:<input type="text" v-model='id'> name:<input type="text" v-model='name'>
+        <button @click="add">添加</button>
+
+        <!-- 绑定item的id，这样选中状态也会跟随id移动 -->
+        <div v-for="item in list" :key="item.id">
+            <input type="checkbox">{{item.id}}-{{item.name}}
+        </div>
+        <div>
+            查询与05同学学习课程完全相同的其他同学的信息，以下查出学号再查询以下即可
+            select sid, count(*) from sc
+            where sid != "05" and sid not in(
+                select sid form sc 
+                where cid not in(select cid from sc where sid = "05")
+            )
+            group by sid
+            having count(*) =(
+                select count(cid) from sc
+                where sid = "05"
+            )
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                id:'',
+                name:'',
+                list:[
+                    {id:1,name:'关羽'},
+                    {id:2,name:'张飞'},
+                    {id:3,name:'赵云'},
+                    {id:4,name:'马超'},
+                    {id:5,name:'黄忠'}
+                ]
+            },
+            methods:{
+                add(){
+                    //往后放数据
+                    this.list.push({id:this.id, name:this.name});
+                    //往前放数据
+                    //this.list.unshift({id:this.id, name:this.name});
+                    //点击添加后自动清除框里边的数据
+                    this.id=this.name="";
+                }
+            },
+        });
+    </script>
+</body>
+</html>

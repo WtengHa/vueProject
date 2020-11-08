@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!--v-on的使用-->
+    <div id="app">
+        <button v-on:click="f1">点点</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg: "好好学习天天向上"
+            },
+            methods:{
+                f1:function(){
+                    alert("写优秀代码！！！")
+                }
+            }
+        });
+    </script>
+</body>
+</html>
